@@ -3,10 +3,12 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>PGSNet</title>
-  <meta property="og:title" content="PGSNet">
+  <title>Swift-Net</title>
+  <meta property="og:title" content="Swift-Net">
   <meta property="og:description"
-    content="Power-Guided Grouped SRU for Real-Time Causal Audio-Visual Speech Separation">
+    content="Streaming with Integrated Fast Temporal Grouped SRU
+    and Lightweight Multi-modal Blocks for Causal
+    Audio-visual Speech Separation">
   <link rel="stylesheet" href="./files/style.css">
   <link rel="stylesheet" href="./files/css">
   <link rel="icon" href="./images/audio-waves.png">
@@ -1957,8 +1959,9 @@
   <div class="header" id="top">
     <h1>
       <span>
-      Power-Guided Grouped SRU for Real-Time
-      Causal Audio-Visual Speech Separation</span>
+        Streaming with Integrated Fast Temporal Grouped SRU
+        and Lightweight Multi-modal Blocks for Causal
+        Audio-visual Speech Separation</span>
     </h1>
 
     <table class="authors">
@@ -2019,10 +2022,10 @@
     <!-- <div class="figure" style="height: 224px; background-image: url(figures/teaser.png); margin-top: 20px;"></div> -->
     <!-- ？<p class="abstract"> -->
     <p class="abstract">
-      Audio-visual speech separation (AVSS) aims to extract a target speech signal from a mixed signal by leveraging both auditory and visual (lip movement) cues. However, most existing AVSS methods operate in an offline manner as they rely on future context, which makes them unsuitable for real-time applications. In this paper, we propose a novel streaming AVSS model, named PGS-Net, which enhances the causal processing capabilities required for real-time applications. Unlike prior time-frequency domain methods, PGS-Net incorporates power spectral features, which are strongly correlated with speech energy distribution and perceptual salience, to guide the model in distinguishing target speech. Additionally, PGS-Net employs grouped SRUs to integrate historical information across different feature spaces, thereby improving the utilization efficiency of historical data. We further introduce a lightweight audio-visual fusion module and template methods to convert non-causal AVSS models to causal models. Experiments on three standard benchmark datasets (LRS2, LRS3, and VoxCeleb2) demonstrated that under causal conditions, our proposed PGS-Net exhibited outstanding performance in cocktail party scenarios, highlighting the potential of this method for processing speech in such complex environments.
+      Audio-visual speech separation (AVSS) aims to extract a target speech signal from a mixed signal by leveraging both auditory and visual (lip movement) cues. However, most existing AVSS methods exhibit complex architectures and rely on future context, operating offline, which renders them unsuitable for real-time applications. In this paper, we propose a novel streaming AVSS model, named Swift-Net, which enhances the causal processing capabilities required for real-time applications. Swift-Net adopts a lightweight visual feature extraction module and an efficient fusion module for audiovisual integration.Additionally, Swift-Net employs grouped SRUs to integrate historical information across different feature spaces, thereby improving the utilization efficiency of historical data. We further propose a causal transformation template to facilitate the conversion of non-causal AVSS models into causal counterparts. Experiments on three standard benchmark datasets (LRS2, LRS3, and VoxCeleb2) demonstrated that under causal conditions, our proposed Swift-Net exhibited outstanding performance in cocktail party scenarios, highlighting the potential of this method for processing speech in such complex environments.
     </p>
     <div>
-      <h2 style="color: #f1c432;">Overview of PGSNet</h2>
+      <h2 style="color: #f1c432;">Overview of Swift-Net</h2>
     </div>
     <div style="margin: auto; margin-top: auto" align="center">
       <p class="abstract">
@@ -2033,11 +2036,10 @@
     </div>
 
     <div>
-      <h2 style="color: #f1c432;">The architecture of PGSNet's separation networks</h2>
+      <h2 style="color: #f1c432;">The architecture of Swift-Net's separation networks</h2>
     </div>
     <div style="margin: auto; margin-top: auto" align="center">
       <p class="abstract">
-        We compare our approach with other methods on the LRS2, LRS3, and VoxCeleb2 datasets. Results show that our method consistently outperforms other causal methods in terms of SI-SNRi, SDRi, and PESQ. All models are implemented following causal design strategies to strictly ensure causality.
       </p>
       <!-- <div style="display: flex; justify-content: center;">
         <img src="./images/FTGSBlock.png" alt="results Image" style="width: 940px">
@@ -2073,7 +2075,7 @@
     </div>
     <div style="margin: auto; margin-top: auto" align="center">
       <p class="abstract">
-        We compare our approach with other methods on the LRS2, LRS3, and VoxCeleb2 datasets. Results show that our method consistently outperforms other causal methods in terms of SI-SNRi, SDRi, and PESQ. All models are implemented following causal design strategies to strictly ensure causality.
+        We compare our approach with other methods on the LRS2, LRS3, and VoxCeleb2 datasets. Results show that our method consistently outperforms other causal methods in terms of SI-SNRi and SDRi. All models are implemented following causal design strategies to strictly ensure causality.
       </p>
       <div style="display: flex; justify-content: center;">
         <img src="./images/Comparison with other SOTA methods.jpg" alt="results Image" style="width: 940px">
@@ -2085,7 +2087,7 @@
     </div>
     <div style="margin: auto; margin-top: auto" align="center">
       <p class="abstract">
-        We evaluated multiple audio-visual speech separation (AVSS) methods, including AV-TFGridNet and RTFSNet, on real-world multi-speaker YouTube videos. The results indicate that PGSNet achieves superior audio separation quality compared to the other models.
+        We evaluated multiple audio-visual speech separation (AVSS) methods, including AV-TFGridNet and RTFSNet, on real-world multi-speaker YouTube videos. The results indicate that Swift-Net achieves superior audio separation quality compared to the other models.
       </p>
       <h3 style="font-weight: bold; color: #ECAEA7">Demo 1</h3>
       <div class="abstract" style="display: flex; justify-content: center;">
@@ -2122,7 +2124,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK1 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK1 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2138,7 +2140,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK2 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK2 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2251,7 +2253,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK1 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK1 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2267,7 +2269,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK2 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK2 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2380,7 +2382,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK1 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK1 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2396,7 +2398,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK2 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK2 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2508,7 +2510,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK1 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK1 (Ours)</span></h5>
             </div>
           </div>
         </div>
@@ -2524,7 +2526,7 @@
               </audio> -->
             </div>
             <div class="card-body" style="padding: 0.5rem;">
-              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">PGSNet SPK2 (Ours)</span></h5>
+              <h5 class="card-title text-center"><span style="font-weight: bold; color:hsl(0, 67%, 61%)">Swift-Net SPK2 (Ours)</span></h5>
             </div>
           </div>
         </div>
