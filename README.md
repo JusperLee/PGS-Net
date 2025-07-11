@@ -4,8 +4,17 @@ ______________________________________________________________________
 
 # A fast and lightweight model for Causal Audio-Visual Speech Separation
 
-[![arXiv](https://img.shields.io/badge/arXiv-2506.06689-brightgreen.svg)](https://arxiv.org/abs/2506.06689)
-[![Samples](https://img.shields.io/badge/Website-Demo_Samples-blue.svg)](https://cslikai.cn/Swift-Net)
+<p align="center">
+  <strong>Wendi Sang<sup>1,*</sup>, Kai Li<sup>2,*</sup>, Runxuan Yang<sup>2</sup>, Jianqiang Huang<sup>1</sup>, Xiaolin Hu<sup>2</sup></strong><br>
+    <strong><sup>1</sup>Qinghai University, Xining, China</strong><br>
+    <strong><sup>2</sup>Tsinghua University, Beijing, China</strong><br>
+  <a href="https://arxiv.org/abs/2506.06689">ArXiv</a> | <a href="https://cslikai.cn/Swift-Net/">Demo</a>
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=JusperLee.Swift-Net" alt="访客统计" />
+  <img src="https://img.shields.io/github/stars/JusperLee/Swift-Net?style=social" alt="GitHub stars" />
+  <img alt="Static Badge" src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey">
+</p>
 
 </div>
 
@@ -68,6 +77,10 @@ Use the `audio_visual_test.py` script for evaluating your trained model on the t
 # Contact
 
 If you have any questions, suggestions, or encounter any issues, please don't hesitate to reach out to us. You can contact us via email at `tsinghua.kaili [AT] gmail.com`.
+
+## License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 ## Citations
 
