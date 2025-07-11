@@ -1,0 +1,163 @@
+# Video network config
+videonet:
+    videonet_name: FRCNNVideoModel
+    videonet_config:
+      backbone_type: resnet
+      relu_type: prelu
+      width_mult: 1.0
+      pretrain: pretrain_zoo/frcnn_128_512.backbone.pth.tar
+audionet:
+    audionet_name: RTFSNetCausal_SRU
+    audionet_config:
+      n_src: 1
+      pretrained_vout_chan: 512                  # output from pretrained model
+      causal: true
+
+      video_bn_params:
+        kernel_size: -1
+
+      audio_bn_params:
+        pre_norm_type: cLNhw
+        pre_act_type: ReLU
+        out_chan: 256
+        kernel_size: 1
+        is2d: true
+
+      enc_dec_params:
+        win: 256
+        hop_length: 128
+        out_chan: 256
+        kernel_size: 3
+        stride: 1
+        bias: false
+        act_type: 
+        norm_type: 
+
+      audio_params:
+        # in_chan same as audio_bn_chan
+        hid_chan: 64
+        kernel_size: 5
+        stride: 2 
+        norm_type: cLNhw
+        act_type: PReLU
+        upsampling_depth: 2
+        repeats: 12
+        shared: true
+        is2d: true
+        layers:
+          layer_1:
+            hid_chan: 32
+            dim: 4
+            kernel_size: 8
+            stride: 1
+            rnn_type: SRU
+            num_layers: 4
+            bidirectional: true
+          layer_2:
+            hid_chan: 32
+            dim: 3
+            kernel_size: 8
+            stride: 1
+            rnn_type: SRU
+            num_layers: 4
+            bidirectional: false
+          layer_3:
+            dim: 3
+            n_freqs: 65
+            n_head: 4
+            hid_chan: 4
+            act_type: PReLU
+            norm_type: LayerNormalization4D
+            causal: true
+
+      video_params:
+        # in_chan same as video_bn_chan
+        hid_chan: 64
+        kernel_size: 3
+        stride: 2
+        norm_type: BatchNorm1d
+        act_type: PReLU
+        upsampling_depth: 4  
+        repeats: 1
+        shared: true
+        is2d: false
+        layers:
+          layer_1:
+            kernel_size: 3
+            n_head: 8
+            dropout: 0.1
+            norm_type: cLN
+            causal: true
+            
+
+      fusion_params:
+        fusion_type: ATTNFusion
+        fusion_shared: true
+        kernel_size: 4
+        is2d: true
+
+      mask_generation_params:
+        mask_generator_type: MaskGenerator
+        mask_act: ReLU
+        RI_split: true
+        is2d: true
+
+# Loss config
+loss:
+  train:
+    loss_func: PITLossWrapper
+    sdr_type: pairwise_neg_snr
+    config:
+      pit_from: pw_mtx
+      threshold_byloss: true
+  val:
+    loss_func: PITLossWrapper
+    sdr_type: pairwise_neg_sisdr
+    config:
+      pit_from: pw_mtx
+      threshold_byloss: false
+
+# Training config
+training:
+  system: AudioVisualLightningModule
+  gpus: [4, 5, 6, 7]
+  parallel: ddp
+  epochs: 500
+  early_stop:
+    monitor: val_loss/dataloader_idx_0
+    mode: min
+    patience: 15
+    verbose: true
+  
+# Optim config
+optimizer:
+  optim_name: adamw
+  lr: 0.001
+  weight_decay: 0.1
+
+# Sche config
+scheduler: 
+  sche_name: ReduceLROnPlateau
+  sche_config:
+    patience: 10
+    factor: 0.5
+
+# Data config
+datamodule:
+  data_name: AVSpeechDataModule
+  data_config:
+    train_dir: /home/data2/DataPreProcess/LRS3/tr
+    valid_dir: /home/data2/DataPreProcess/LRS3/cv
+    test_dir: /home/data2/DataPreProcess/LRS3/tt
+    n_src: 1
+    sample_rate: 16000
+    segment: 2.0
+    normalize_audio: false
+    batch_size: 4
+    num_workers: 8
+    pin_memory: true
+    persistent_workers: false
+
+    
+exp:
+  exp_name: RTFS-Net_causal_LRS2
